@@ -1,3 +1,10 @@
+"""
+	Вариант 20.
+	Натуральные числа, состоящие из четных и нечетных чередующихся цифр. 
+	Для каждого числа минимальную и максимальную цифру вывести прописью. 
+"""
+
+
 numbersDict = {
 	1: 'один',
 	2: 'два',
@@ -13,13 +20,22 @@ numbersDict = {
 with open("numbersList.txt") as file:
 	stringNumbers = [line.strip() for line in file if line.strip()]
 
+def is_natural_number_try_except(s):
+	try:
+	    num = int(s)
+	    return num > 0
+	except ValueError:
+	    return False
 
 def convertNumbersToInt(numbers):
 	intNumbers = []
 
 	try:
 		for i in numbers:
-			intNumbers.append(int(i))
+			is_num = is_natural_number_try_except(i);
+
+			if (is_num):
+				intNumbers.append(int(i))
 
 		return intNumbers
 	except ValueError as err:
